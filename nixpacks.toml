@@ -2,9 +2,12 @@
 nixPkgs = ["php83", "php83Packages.composer"]
 
 [phases.install]
-cmds = ["composer install --no-dev --optimize-autoloader --ignore-platform-reqs"]
+cmds = [
+  "composer install --no-dev --optimize-autoloader --ignore-platform-reqs"
+]
 
 [phases.build]
+cmds = []
 
 [start]
 cmd = "cd php-app/public && php -S 0.0.0.0:$PORT index.php"
