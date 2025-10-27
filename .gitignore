@@ -8,6 +8,16 @@ php-app/data/*.json
 # Environment
 .env.local
 
+# React/Node (excluded from repo)
+node_modules/
+src/
+components/
+public/
+app/
+hooks/
+styles/
+lib/
+
 # System files
 .DS_Store
 Thumbs.db
