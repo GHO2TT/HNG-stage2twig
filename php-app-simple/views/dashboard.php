@@ -1,0 +1,65 @@
+<?php
+$title = 'Dashboard - TicketApp';
+ob_start();
+?>
+
+<div class="min-h-screen flex flex-col bg-slate-900">
+    <main class="flex-1 px-4 py-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-12">
+                <h1 class="text-4xl font-bold text-white mb-2">Dashboard</h1>
+                <p class="text-slate-400">Welcome back! Here's your ticket overview.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-blue-600 rounded-lg p-6 text-white shadow-lg">
+                    <p class="text-sm font-medium opacity-90">Total Tickets</p>
+                    <p class="text-4xl font-bold mt-2"><?php echo $stats['total']; ?></p>
+                </div>
+                <div class="bg-emerald-600 rounded-lg p-6 text-white shadow-lg">
+                    <p class="text-sm font-medium opacity-90">Open</p>
+                    <p class="text-4xl font-bold mt-2"><?php echo $stats['open']; ?></p>
+                </div>
+                <div class="bg-amber-600 rounded-lg p-6 text-white shadow-lg">
+                    <p class="text-sm font-medium opacity-90">In Progress</p>
+                    <p class="text-4xl font-bold mt-2"><?php echo $stats['in_progress']; ?></p>
+                </div>
+                <div class="bg-slate-600 rounded-lg p-6 text-white shadow-lg">
+                    <p class="text-sm font-medium opacity-90">Closed</p>
+                    <p class="text-4xl font-bold mt-2"><?php echo $stats['closed']; ?></p>
+                </div>
+            </div>
+
+            <div class="bg-slate-800 rounded-lg p-8 border border-slate-700">
+                <h2 class="text-2xl font-bold text-white mb-6">Quick Actions</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <a
+                        href="/tickets"
+                        class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors text-center"
+                    >
+                        Create Ticket
+                    </a>
+                    <a
+                        href="/tickets"
+                        class="px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors text-center"
+                    >
+                        View All Tickets
+                    </a>
+                    <button
+                        onclick="alert('Feature coming soon!')"
+                        class="px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors"
+                    >
+                        Generate Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <?php include __DIR__ . '/components/footer.php'; ?>
+</div>
+
+<?php
+$content = ob_get_clean();
+include __DIR__ . '/layout.php';
+?>

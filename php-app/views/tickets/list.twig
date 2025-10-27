@@ -1,0 +1,63 @@
+{% if tickets|length == 0 %}
+    <div class="bg-slate-800 rounded-lg p-12 text-center border border-slate-700">
+        <p class="text-slate-400 text-lg">No tickets found. Create one to get started!</p>
+    </div>
+{% else %}
+    <div class="space-y-4">
+        {% for ticket in tickets %}
+            <div class="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-slate-600 transition-colors">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-white mb-2">{{ ticket.title }}</h3>
+                        <p class="text-slate-400 mb-4">{{ ticket.description }}</p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 rounded-full text-sm font-medium 
+                                {% if ticket.status == 'open' %}
+                                    bg-emerald-100 text-emerald-800
+                                {% elseif ticket.status == 'in_progress' %}
+                                    bg-amber-100 text-amber-800
+                                {% else %}
+                                    bg-slate-100 text-slate-800
+                                {% endif %}
+                            ">
+                                {% if ticket.status == 'in_progress' %}
+                                    In Progress
+                                {% else %}
+                                    {{ ticket.status|capitalize }}
+                                {% endif %}
+                            </span>
+                            <span class="text-sm font-medium 
+                                {% if ticket.priority == 'low' %}
+                                    text-slate-400
+                                {% elseif ticket.priority == 'medium' %}
+                                    text-blue-400
+                                {% else %}
+                                    text-red-400
+                                {% endif %}
+                            ">
+                                Priority: {{ ticket.priority|capitalize }}
+                            </span>
+                            <span class="text-slate-500 text-sm">
+                                Created: {{ ticket.created_at|date('M d, Y') }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a
+                            href="/tickets/{{ ticket.id }}/edit"
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        >
+                            Edit
+                        </a>
+                        <button
+                            onclick="confirmDelete('{{ ticket.id }}')"
+                            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

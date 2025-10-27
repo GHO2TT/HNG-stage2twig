@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ticket-app-twig
+    runtime: php
+    plan: free
+    buildCommand: composer install
+    startCommand: cd php-app/public && php -S 0.0.0.0:$PORT index.php
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_NAME
+        value: TicketApp

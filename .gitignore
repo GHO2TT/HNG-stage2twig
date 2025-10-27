@@ -1,0 +1,19 @@
+# PHP Dependencies
+/vendor/
+composer.lock
+
+# Data files
+php-app/data/*.json
+
+# Environment
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

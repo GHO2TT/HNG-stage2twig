@@ -1,0 +1,6 @@
+<footer class="bg-slate-800 border-t border-slate-700 mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-center text-slate-400">
+        <p>&copy; 2025 TicketApp. All rights reserved.</p>
+        <p class="text-sm mt-2">Built with PHP and TailwindCSS - No Dependencies Required!</p>
+    </div>
+</footer>
