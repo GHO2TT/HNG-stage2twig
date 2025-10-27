@@ -1,7 +1,7 @@
 services:
   - type: web
     name: ticket-app-twig
-    runtime: php
+    env: php
     plan: free
     buildCommand: composer install --ignore-platform-reqs --no-dev
     startCommand: cd php-app/public && php -S 0.0.0.0:$PORT index.php
