@@ -1,7 +1,14 @@
 <?php
 // php-app/public/index.php - Front Controller
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Try to load autoload from multiple possible locations
+if (file_exists(__DIR__ . '/../../vendor/autoload.php')) {
+    require_once __DIR__ . '/../../vendor/autoload.php';
+} elseif (file_exists(__DIR__ . '/../vendor/autoload.php')) {
+    require_once __DIR__ . '/../vendor/autoload.php';
+} else {
+    die('Composer autoload not found. Run: composer install');
+}
 
 session_start();
 
